@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link href="/static/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript">window.setTimeout("document.getElementById('msg').style.display='none';", 1000); </script>
+    <style>
+        main .form-control
+        {
+            display: inline-block;
+
+            width: 25%;
+
+            padding: 20px 20px;
+
+            font-size: 20px;
+        }
+    </style>
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body style="background-color:  #fe817f">
+    <nav class="navbar navbar-expand-md navbar-light bg-dark ">
+        <a class="navbar-brand" style="color: white; font-size:35px">
+    <img src="/static/images/Mysuru.png" width="55" height="55" class="d-inline-block align-top" alt="" loading="lazy"></a>
+        <div class="collapse navbar-collapse heading" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link"  style="color: white" href="/placestovisit">Attractions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  style="color: white" href="/history">History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  style="color: white" href="/hotels">Accomodations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  style="color: white" href="/opportunities">Opportunities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  style="color: white" href="/prevention">Covid Guidelines</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: white" href="/joinus">Join us</a>
+            </li>
+        </ul>
+  </div>
+</nav>
+
+    {% if get_flashed_messages() %}
+        <header id="msg">
+            <div class="alert alert-primary border text-center"  role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+    {% endif %}
+
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer class="footer-distributed">
+
+	<div class="footer-left">
+
+		<h3>Visit Mysore</h3>
+
+		<p class="footer-links">
+			<a href="/">Home</a>
+			·
+			<a href="/placestovisit">Attraction</a>
+			·
+			<a href="/hotels">Accomodation</a>
+			·
+			<a href="/joinus">About</a>
+			·
+			<a href="#">FAQs</a>
+			·
+			<a href="#">Contact</a>
+		</p>
+
+		<p class="footer-company-name">Visit Mysuru &copy; 2020</p>
+	</div>
+
+	<div class="footer-center">
+
+		<div>
+			<i class="fa fa-map-marker"></i>
+			<p>Mysuru, Karnataka</p>
+		</div>
+
+		<div>
+			<i class="fa fa-phone"></i>
+			<p>+91 980 123456</p>
+		</div>
+
+		<div>
+			<i class="fa fa-envelope"></i>
+			<p><a href="mailto:ayushmajumdar6501@gmail.com">visitmysuru@enquiry.com</a></p>
+		</div>
+
+	</div>
+
+	<div class="footer-right">
+
+		<p class="footer-company-about">
+			<span>12.2958° N, 76.6394° E</span>
+			Mysore - A Traveller's Dream Vacation !!
+		</p>
+
+		<div class="footer-icons">
+
+			<a class="navbar-brand fa" href="#">
+        <img src="/static/images/fb.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy">
+      </a>
+      <a class="navbar-brand fa" href="#">
+        <img src="/static/images/insta.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy">
+      </a>
+      <a class="navbar-brand fa" href="#">
+        <img src="/static/images/twitter.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy">
+      </a>
+    	</div>
+
+    	</div>
+
+    </footer>
+
+</body>
+</html>

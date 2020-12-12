@@ -1,0 +1,225 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Attractions
+{% endblock %}
+
+{% block main %}
+    <div>
+        <div class="w3-container w3-black w3-allerta" style="left: 50%;">
+          <p class="centred" style="font-size: 70px">Attractions: Places to visit</p>
+        </div>
+    </div>
+
+    <a class="weatherwidget-io" href="https://forecast7.com/en/12d3076d64/mysuru/" data-label_1="MYSORE" data-label_2="WEATHER" data-theme="orange" >MYSORE WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+
+    <div id="map"></div>
+    <script>
+    function initMap(){
+      // Map options
+      var options = {
+        zoom:13,
+        center:{lat:12.2958,lng:76.6394}
+      }
+
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'), options);
+
+      // Listen for click on map
+      google.maps.event.addListener(map, 'click', function(event){
+        // Add marker
+        addMarker({coords:event.latLng});
+      });
+
+      // Array of markers
+      var markers = [
+        {
+          coords:{lat:12.3052,lng:76.6552},
+          content:'<h1>Mysore Palace</h1>'
+        },
+        {
+          coords:{lat:12.2725,lng:76.6707},
+          content:'<h1>Sri Chamundeshwari Temple</h1>'
+        },
+        {
+          coords:{lat:12.4217,lng:76.5728},
+          content:'<h1>Brindavan Gardens</h1>'
+        },
+        {
+            coords:{lat:12.4244,lng:76.6563},
+            content:'<h1>Ranganathittu Bird Sanctuary</h1>'
+        },
+        {
+            coords:{lat:12.3022,lng:76.6642},
+            content:'<h1>Sri Chamarajendra Zoological Garden</h1>'
+        },
+        {
+            coords:{lat:12.3210,lng:76.6583},
+            content:'<h1>St. Philomenas Cathedral</h1>'
+        }
+      ];
+
+      // Loop through markers
+      for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuyEWVqXhxGHKSnFH2r1jMpQtJsrcu3bU&callback=initMap">
+    </script>
+
+    <div class="container">
+    <div class="row">
+        <div class="col-12 ptop col-sm-3">
+            <div class="cards  bg-light mb-3">
+                <div class="card-header bg-success text-white text-uppercase border"><i class="fa fa-list"></i> Categories</div>
+                <ul class="list-group category_block">
+                    <li class="list-group-item active"><a href="/placestovisit">Places to visit</a></li>
+                    <li class="list-group-item"><a href="/attractions">Recreational Activities</a></li>
+                    <li class="list-group-item"><a href = "/temples">Magnificent Temples</a></li>
+                    <li class="list-group-item"><a href = "/parks">Exuberating Parks</a></li>
+                </ul>
+            </div>
+    </div>
+    <div class="col">
+        <div class="row">
+
+            <div class="col-12 col-md-6 col-lg-4 ptop">
+                <div class="card">
+                    <img class="card-img-top prodimgs" src="static/images/ptv/ptvpalace.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Mysore Palace</h4>
+                        <p class="card-text">4.6⭐ (167k ratings)</p>
+                        <p class="card-text">The Mysore Palace is a historical palace and the royal residence at Mysore.</p>
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <a href="https://www.google.com/travel/things-to-do/see-all?g2lb=2502548%2C4258168%2C4270442%2C4306835%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4428793%2C4448293%2C4463263%2C4463666%2C4464463%2C4466981%2C4270859%2C4284970%2C4291517&hl=en-IN&gl=in&un=1&dest_mid=%2Fm%2F0j603&dest_state_type=sattd&dest_src=ts&sa=X&ved=2ahUKEwiftNGszsftAhVE63MBHf19Ar4Q69EBKAAwAHoECAMQIw#ttdm=12.295365_76.654037_13&ttdmf=%252Fm%252F056cl_" class="btn btn-info" role="button">Know more </a></div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 ptop">
+                <div class="card">
+                    <img class="card-img-top prodimgs" src="static/images/ptv/ptvsctemple.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Shri Chamundeshwari Temple</h4>
+                        <p class="card-text">4.7⭐ (20k ratings)</p>
+                        <p class="card-text">The Chamundeshwari Temple is a Hindu temple on the top of Chamundi Hills</p>
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <a href="https://www.google.com/travel/things-to-do/see-all?g2lb=2502548%2C4258168%2C4270442%2C4306835%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4428793%2C4448293%2C4463263%2C4463666%2C4464463%2C4466981%2C4270859%2C4284970%2C4291517&hl=en-IN&gl=in&un=1&dest_mid=%2Fm%2F0j603&dest_state_type=sattd&dest_src=ts&sa=X&ved=2ahUKEwiftNGszsftAhVE63MBHf19Ar4Q69EBKAAwAHoECAMQIw#ttdm=12.295365_76.654037_13&ttdmf=%252Fm%252F056cl_" class="btn btn-info" role="button">Know More</a></div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+            <div class="col-12 col-md-6 col-lg-4 ptop">
+                <div class="card">
+                    <img class="card-img-top prodimgs" src="/static/images/ptv/ptvbgardens.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Brindavan Gardens</h4>
+                        <p class="card-text">4.3⭐ (67k ratings)</p>
+                        <p class="card-text">The Brindavan Gardens is a garden located in the Mandya District of the Indian State of Karnataka.</p>
+                            <div class="row">
+                            <div class="col">
+                                <br>
+                                <a href="https://www.google.com/travel/things-to-do/see-all?g2lb=2502548%2C4258168%2C4270442%2C4306835%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4428793%2C4448293%2C4463263%2C4463666%2C4464463%2C4466981%2C4270859%2C4284970%2C4291517&hl=en-IN&gl=in&un=1&dest_mid=%2Fm%2F0j603&dest_state_type=sattd&dest_src=ts&sa=X&ved=2ahUKEwiftNGszsftAhVE63MBHf19Ar4Q69EBKAAwAHoECAMQIw#ttdm=12.295365_76.654037_13&ttdmf=%252Fm%252F056cl_" class="btn btn-info" role="button">Know more </a></div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+            <div class="col-12 col-md-6 col-lg-4 ptop">
+                <div class="card">
+                    <img class="card-img-top prodimgs" src="static/images/ptv/ptvzgarden.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Chamarajendra Zoological Gardens</h4>
+                        <p class="card-text">4.5⭐ (77k ratings)</p>
+                        <p class="card-text">Mysore Zoo is a 157-acre zoo is one of the oldest and most
+                        popular zoos in India</p>
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <a href="https://www.google.com/travel/things-to-do/see-all?g2lb=2502548%2C4258168%2C4270442%2C4306835%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4428793%2C4448293%2C4463263%2C4463666%2C4464463%2C4466981%2C4270859%2C4284970%2C4291517&hl=en-IN&gl=in&un=1&dest_mid=%2Fm%2F0j603&dest_state_type=sattd&dest_src=ts&sa=X&ved=2ahUKEwiftNGszsftAhVE63MBHf19Ar4Q69EBKAAwAHoECAMQIw#ttdm=12.295365_76.654037_13&ttdmf=%252Fm%252F056cl_" class="btn btn-info" role="button">Know more </a></div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+            <div class="col-12 col-md-6 col-lg-4 ptop">
+                <div class="card">
+                    <img class="card-img-top prodimgs" src="static/images/ptv/ptvrbsanc.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Ranganathittu Bird Sanctuary</h4>
+                        <p class="card-text">4.3⭐ (15k ratings)</p>
+                        <p class="card-text">Ranganathittu Bird Sanctuary is the largest bird sanctuary in the state.</p>
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <a href="https://www.google.com/travel/things-to-do/see-all?g2lb=2502548%2C4258168%2C4270442%2C4306835%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4428793%2C4448293%2C4463263%2C4463666%2C4464463%2C4466981%2C4270859%2C4284970%2C4291517&hl=en-IN&gl=in&un=1&dest_mid=%2Fm%2F0j603&dest_state_type=sattd&dest_src=ts&sa=X&ved=2ahUKEwiftNGszsftAhVE63MBHf19Ar4Q69EBKAAwAHoECAMQIw#ttdm=12.295365_76.654037_13&ttdmf=%252Fm%252F056cl_" class="btn btn-info" role="button">Know more </a></div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+            <div class="col-12 col-md-6 col-lg-4 ptop">
+                <div class="card">
+                    <img class="card-img-top prodimgs" src="static/images/ptv/ptvcathedral.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">St. Philomena's Cathedral</h4>
+                        <p class="card-text">4.5⭐ (22k ratings)</p>
+                        <p class="card-text">St. Philomena’s Cathedral is a Catholic church of the Diocese of Mysore</p>
+                        <div class="row">
+                            <div class="col">
+                                <br>
+                                <a href="https://www.google.com/travel/things-to-do/see-all?g2lb=2502548%2C4258168%2C4270442%2C4306835%2C4317915%2C4328159%2C4371334%2C4401769%2C4419364%2C4428793%2C4448293%2C4463263%2C4463666%2C4464463%2C4466981%2C4270859%2C4284970%2C4291517&hl=en-IN&gl=in&un=1&dest_mid=%2Fm%2F0j603&dest_state_type=sattd&dest_src=ts&sa=X&ved=2ahUKEwiftNGszsftAhVE63MBHf19Ar4Q69EBKAAwAHoECAMQIw#ttdm=12.295365_76.654037_13&ttdmf=%252Fm%252F056cl_" class="btn btn-info" role="button">Know more </a></div>
+                        </div>
+                     </div>
+                     </form>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
